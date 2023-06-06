@@ -8,5 +8,5 @@ const http = axios.create({
 });
 
 export const api = {
-  getQuote: () => http.get(),
+  getData: () => http.get(),
 };

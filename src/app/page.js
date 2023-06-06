@@ -1,22 +1,24 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { api } from "@/services/api";
 import styles from "./page.module.css";
 
 const App = () => {
-  const [data, setData] = useState(null);
+  const [quote, setQuote] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getData();
-    console.log(data);
+    getQuote();
+    setLoading(true);
   }, []);
 
-  const getData = async () => {
-    const { data } = await api.getQuote();
-    setData(data.slip);
+  const getQuote = async () => {
+    const { data } = await api.getData();
+    setQuote(data.slip);
   };
 
-  if (data === null) {
+  if (quote === null) {
     return null;
   }
 
@@ -24,19 +26,23 @@ const App = () => {
     <main className={styles.Main}>
       <div className={styles.Advice}>
         <div className={styles.AdviceContent}>
-          <h1 className={styles.AdviceTitleQuote}>advice #{data.id}</h1>
-          <p className={styles.AdviceQuote}>{data.advice}</p>
+          <h1 className={styles.AdviceQuoteTitle}>advice #{quote.id}</h1>
+          <p className={styles.AdviceQuote}>{quote.advice}</p>
 
           <img
             className={styles.AdviceDivider}
             src="../assets/pattern-divider-desktop.svg"
-            alt=""
+            alt={quote.advice}
           />
         </div>
-        <button onClick={getData}>
-          <img src="../assets/icon-dice.svg" alt="" srcSet="" />
+        <button onClick={getQuote}>
+          <img src="../assets/icon-dice.svg" />
         </button>
       </div>
+      <span className={styles.dev}>
+        made by
+        <Link href="https://github.com/edcabralc"> @edcabralc</Link>
+      </span>
     </main>
   );
 };

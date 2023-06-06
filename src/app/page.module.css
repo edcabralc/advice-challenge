@@ -20,7 +20,7 @@
   background-color: var(--dark-grayish-blue);
   border-radius: 1.5rem;
   padding: 2.4rem;
-  position: absolute;
+  position: relative;
 }
 
 .Advice button {
@@ -44,14 +44,14 @@
 }
 
 .AdviceContent {
-  align-items: center;
-  gap: 4.8rem;
-  width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   flex-direction: column;
 }
 
-.AdviceTitleQuote {
+.AdviceQuoteTitle {
   color: var(--neon-green);
   font-size: 1.4rem;
   font-weight: 800;
@@ -66,6 +66,25 @@
   font-size: var(--quote-size);
   font-size: 2.8rem;
   text-align: center;
+  min-height: 180px;
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.AdviceDivider {
+  margin-bottom: 4.2rem;
+}
+
+.dev {
+  position: absolute;
+  bottom: 2%;
+  color: var(--neon-green);
+  font-size: 1.6rem;
+}
+
+.dev a:hover {
+  color: var(--light-cyan);
 }
 
 @media (max-width: 750px) {
@@ -74,14 +93,17 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 0 5rem;
+    padding: 0 1.6rem;
   }
 
   .Advice {
-    min-height: 315px;
+    min-height: 316px;
     width: 100%;
-    /* padding:5rem; */
-    position: relative;
+  }
+
+  .AdviceQuote {
+    line-height: 34px;
+    font-size: 2.5rem;
   }
 
   .AdviceDivider {
