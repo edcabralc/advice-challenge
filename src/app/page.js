@@ -1,16 +1,36 @@
+"use client";
+import { useState, useEffect } from "react";
+import { api } from "@/services/api";
 import styles from "./page.module.css";
 
 const App = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    getData();
+    console.log(data);
+  }, []);
+
+  const getData = async () => {
+    const { data } = await api.getQuote();
+    setData(data.slip);
+  };
+
+  if (data === null) {
+    return null;
+  }
+
   return (
     <main className={styles.Main}>
       <div className={styles.Advise}>
         <div className={styles.AdviseContent}>
-          <h1 className={styles.AdviseTitleQuote}>advise</h1>
-          <p className={styles.AdviseQuote}>paragraph</p>
+          <h1 className={styles.AdviseTitleQuote}>advice #{data.id}</h1>
+          <p className={styles.AdviseQuote}>{data.advice}</p>
+
           <img src="../assets/pattern-divider-desktop.svg" alt="" />
         </div>
-        <button>
-          <img src="../assets/icon-dice.svg" alt="" srcset="" />
+        <button onClick={getData}>
+          <img src="../assets/icon-dice.svg" alt="" srcSet="" />
         </button>
       </div>
     </main>
