@@ -22,12 +22,16 @@ const App = () => {
 
   return (
     <main className={styles.Main}>
-      <div className={styles.Advise}>
-        <div className={styles.AdviseContent}>
-          <h1 className={styles.AdviseTitleQuote}>advice #{data.id}</h1>
-          <p className={styles.AdviseQuote}>{data.advice}</p>
+      <div className={styles.Advice}>
+        <div className={styles.AdviceContent}>
+          <h1 className={styles.AdviceTitleQuote}>advice #{data.id}</h1>
+          <p className={styles.AdviceQuote}>{data.advice}</p>
 
-          <img src="../assets/pattern-divider-desktop.svg" alt="" />
+          <img
+            className={styles.AdviceDivider}
+            src="../assets/pattern-divider-desktop.svg"
+            alt=""
+          />
         </div>
         <button onClick={getData}>
           <img src="../assets/icon-dice.svg" alt="" srcSet="" />
