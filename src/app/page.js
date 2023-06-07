@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { api } from "@/services/api";
 import styles from "./page.module.css";
+import { Loading } from "@/components/Loading";
 
 const App = () => {
   const [quote, setQuote] = useState(null);
@@ -10,12 +11,25 @@ const App = () => {
 
   useEffect(() => {
     getQuote();
-    setLoading(true);
   }, []);
 
   const getQuote = async () => {
-    const { data } = await api.getData();
-    setQuote(data.slip);
+    setLoading(true);
+    try {
+      const response = await api.getData();
+      console.log(response);
+
+      if (response.status !== 200) {
+        throw new Error("Não foi possível obter os dados");
+      }
+
+      const { data } = response;
+      setQuote(data.slip);
+    } catch ({ name, error, message }) {
+      console.log(`${name}: ${error}. ${message}`);
+    }
+    setLoading(false);
+    // console.log(data);
   };
 
   if (quote === null) {
@@ -26,14 +40,18 @@ const App = () => {
     <main className={styles.Main}>
       <div className={styles.Advice}>
         <div className={styles.AdviceContent}>
-          <h1 className={styles.AdviceQuoteTitle}>advice #{quote.id}</h1>
-          <p className={styles.AdviceQuote}>{quote.advice}</p>
-
-          <img
-            className={styles.AdviceDivider}
-            src="../assets/pattern-divider-desktop.svg"
-            alt={quote.advice}
-          />
+          {loading && <Loading />}
+          {!loading && quote && (
+            <>
+              <h1 className={styles.AdviceQuoteTitle}>advice #{quote.id}</h1>
+              <p className={styles.AdviceQuote}>{quote.advice}</p>
+              <img
+                className={styles.AdviceDivider}
+                src="../assets/pattern-divider-desktop.svg"
+                alt={quote.advice}
+              />
+            </>
+          )}
         </div>
         <button onClick={getQuote}>
           <img src="../assets/icon-dice.svg" />

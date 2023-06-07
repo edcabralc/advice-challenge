@@ -1,4 +1,3 @@
-// https://api.adviceslip.com/
 //api.adviceslip.com/advice
 
 import axios from "axios";
