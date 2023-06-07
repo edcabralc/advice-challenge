@@ -17,7 +17,6 @@ const App = () => {
     setLoading(true);
     try {
       const response = await api.getData();
-      console.log(response);
 
       if (response.status !== 200) {
         throw new Error("Não foi possível obter os dados");
@@ -29,7 +28,6 @@ const App = () => {
       console.log(`${name}: ${error}. ${message}`);
     }
     setLoading(false);
-    // console.log(data);
   };
 
   if (quote === null) {
