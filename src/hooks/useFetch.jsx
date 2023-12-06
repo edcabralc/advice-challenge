@@ -1,10 +1,8 @@
-import React from "react";
 import { useApi } from "./useApi";
-
-const api = useApi();
 
 export const useFetch = () => ({
   getQuote: async () => {
+    const api = useApi();
     try {
       const response = await api.getData();
 
