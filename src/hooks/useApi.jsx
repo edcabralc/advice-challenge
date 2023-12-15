@@ -1,5 +1,5 @@
 import { http } from "@/services/api";
 
 export const useApi = () => ({
-  getData: async () => await http.get(),
+  fetchData: async (endpoint) => await http.get(endpoint),
 });

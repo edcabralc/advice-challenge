@@ -1,16 +1,14 @@
 import { useApi } from "./useApi";
 
 export const useFetch = () => ({
-  getQuote: async () => {
+  getData: async () => {
     const api = useApi();
     try {
-      const response = await api.getData();
+      const { data, status } = await api.fetchData("/advice");
 
-      if (response.status !== 200) {
+      if (status !== 200) {
         throw new Error("Não foi possível obter os dados");
       }
-
-      const { data } = response;
 
       return data;
     } catch ({ name, error, message }) {

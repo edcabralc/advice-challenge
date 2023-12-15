@@ -1,8 +1,9 @@
 "use client";
-import { Quote } from "@/components/Quote";
+import Card from "@/components/Card";
+// import { Quote } from "@/components/Quote";
 
 const App = () => {
-  return <Quote />;
+  return <Card />;
 };
 
 export default App;

@@ -1,0 +1,9 @@
+.error {
+  color: #ff9966;
+  /* color: var(--light-cyan); */
+  font-size: var(--quote-size);
+  font-size: 2.8rem;
+  text-align: center;
+  min-height: 180px;
+  padding: 2rem 0;
+}
