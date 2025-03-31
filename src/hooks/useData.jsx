@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { useFetch } from "../hooks/useFetch";
+import { getData } from "../services/getData";
 
 export const useData = () => {
-  const { getData } = useFetch();
   const [quote, setQuote] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
