@@ -1,4 +1,4 @@
-# Projeto Advise Challenge - Frontend Mentor
+# Projeto Advice Challenge - Frontend Mentor
 
 Este é um projeto simples desenvolvido com Next.js, onde você pode obter uma citação aleatória de uma API e usar o `AbortController` para cancelar requisições anteriores caso uma nova seja feita antes da anterior ser concluída.
 
