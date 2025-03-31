@@ -1,8 +1,10 @@
 import { fetchData } from "../utils/fetchData";
 
-const getData = async () => {
+const getData = async controller => {
   try {
-    const { data, status } = await fetchData("/advice");
+    const { data, status } = await fetchData("/advice", {
+      signal: controller,
+    });
 
     if (status !== 200) {
       throw new Error("Não foi possível obter os dados");
